@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+$body-color: #e4f3fc
+$white: #fff
+$primary: #0d6efd
+$success: #28a745
+$danger: #dc3545
+
+body
+  background-color: $body-color
+
+@media (min-width: 1400px)
+  .container, .container-lg, .container-md, .container-sm, .container-xl
+    max-width: 1400px
+
+@media (min-width: 1366px)
+  .container, .container-lg, .container-md, .container-sm, .container-xl
+    max-width: 1366px
+    padding-right: 0px
+    padding-left: 0px
+  .col-white
+    background-size: 60%
+
+.col-white
+  background: $white url("./assets/footer.png") no-repeat fixed bottom
+
+.col-white
+  padding: 10% 10%
+
+.card-header
+  background-color: $white
+  padding: 5% 0% 0% 0%
+
+.nav
+  flex-wrap: inherit
+
+.nav-item
+  flex-grow: 1
+  text-align: center
+
+.nav-link
+  color: #000
+  font-weight: bold
+  font-size: 20px
+
+.nav-link-active
+  color: $primary
+  border-bottom: $primary solid 10px
+
+.price
+  color: $primary
+  font-weight: bold
+  font-size: 1.2rem
+
+.is-crypto, .not-crypto
+  left: 5%
+
+.is-crypto::before, .not-crypto::before
+  position: absolute
+  content: ""
+  top: 1%
+  left: -5%
+  height: 20px
+  width: 20px
+  border-radius: 50% 50%
+
+.is-crypto::before
+  background-color: $success
+
+.not-crypto::before
+  background-color: $danger

@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.sass",
+              "src/assets/style.sass"
             ],
             "scripts": []
           },
@@ -124,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "fullstack-front"
+  "defaultProject": "fullstack-front",
+  "cli": {
+    "analytics": "d459c84f-3c35-4aca-bbb2-5a2b06b07642"
+  }
 }

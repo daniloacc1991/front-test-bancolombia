@@ -1,18 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
+
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConvertMoneyComponent } from './views/convert-money/convert-money.component';
+import { ListMoneyComponent } from './views/list-money/list-money.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConvertMoneyComponent,
+    ListMoneyComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InfiniteScrollModule,
   ],
-  providers: [],
+  providers: [
+    {provide: DEFAULT_CURRENCY_CODE, useValue: 'COP' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
