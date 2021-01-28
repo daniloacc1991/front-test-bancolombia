@@ -13,14 +13,14 @@
         </div>
       </div>
     </div>
-    <div class="row m-t-1" *ngFor="let i of array">
+    <div class="row m-t-1" *ngFor="let i of assetsView">
       <div class="col-12 card">
         <div class="card-body card-body-item">
           <div class="row">
             <div class="col-3">{{i.name}}</div>
-            <div class="col-3 price">{{i.price | currency:'$':'symbol'}}</div>
+            <div class="col-3 price">{{ i.price | currency:'$':'symbol'}}</div>
             <div [ngClass]="{'is-crypto text-success': i.type === 'CRYPTO', 'not-crypto text-danger': i.type !== 'CRYPTO'}" class="col-3">{{i.type === 'CRYPTO' ? 'SI' : 'NO'}}</div>
-            <div class="col-3"><a href=""><img src="./assets/shuffle.png" alt="shuffle" width="30px"></a></div>
+            <div class="col-3"><a (click)="goConvert(i)" class="btn"><img src="./assets/shuffle.png" alt="shuffle" width="30px"></a></div>
           </div>
         </div>
       </div>

@@ -15,6 +15,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "~environment": ["src/environments/environment"],
+      "~core/*": ["src/app/core/*"],
+      "~models": ["src/app/models/index.ts"],
+      "~services": ["src/app/services/index.ts"],
+      "~root-store/*": ["src/app/root-store/*"]
+    }
   }
 }
