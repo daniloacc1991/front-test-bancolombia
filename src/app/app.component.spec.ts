@@ -1,35 +1,47 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AppComponent } from './app.component';
+import { authMock, initialBncStateMock } from './mock';
 
 describe('AppComponent', () => {
+
+  let component: AppComponent;
+  let serviceJWT: JwtHelperService;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule,
+        JwtModule.forRoot({
+          config: {
+            tokenGetter: () => {
+              return authMock.access_token;
+            }
+          }
+        }),
       ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      providers: [provideMockStore({ initialState: initialBncStateMock }),],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    serviceJWT = TestBed.inject(JwtHelperService);
   });
 
-  it(`should have as title 'fullstack-front'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('fullstack-front');
+  it('Debería crear AppComponent', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('fullstack-front app is running!');
+  it('Debe injectar el servicio JWT', () => {
+    expect(serviceJWT).toBeTruthy();
   });
+
 });
