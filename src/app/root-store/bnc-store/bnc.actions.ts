@@ -1,5 +1,11 @@
 import { createAction, props } from "@ngrx/store";
 import { AssetTicker, AuthBNC, Asset } from "~models";
+import { BncState } from './bnc.state'
+
+export const InitState = createAction(
+  '[Bnc] Init State',
+  props<{ initState: BncState }>(),
+);
 
 export const Auth = createAction(
   '[BNC] Auth',

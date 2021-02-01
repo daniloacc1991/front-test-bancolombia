@@ -19,7 +19,7 @@ export const initialBncStateMock: BncState = {
 };
 
 
-export const companyStateMock: BncStoreState.BncState = {
+export const bncStateMock: BncStoreState.BncState = {
   assetPrimary: assetsMocks[0],
   assetSecundary: assetsMocks[0],
   assetTicketPrimary: assetTicketMock,
@@ -30,5 +30,5 @@ export const companyStateMock: BncStoreState.BncState = {
 };
 
 export const newStateMock: State = {
-  bnc: companyStateMock,
+  bnc: bncStateMock,
 };

@@ -18,6 +18,7 @@ const bncReducer = createReducer<BncState>(
   on(fromActionsBnc.LoadAssetTickerSecundary, (state, { asset }) => ({ ...state, assetSecundary: asset })),
   on(fromActionsBnc.LoadAssetTickerSecundarySuccess, (state, { assetTicker }) => ({ ...state, assetTicketSecundary: assetTicker })),
   on(fromActionsBnc.LoadAllFailure, (state) => ({ ...state, assetSecundary: undefined })),
+  on(fromActionsBnc.InitState, (state, { initState }) => ({ ...initState })),
 );
 
 export function reducer(state: BncState | undefined, action: Action) {

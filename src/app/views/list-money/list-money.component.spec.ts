@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { InfiniteScrollDirective, InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { assetsMocks, initialBncStateMock } from 'src/app/mock';
 
 import { ListMoneyComponent } from './list-money.component';
@@ -10,12 +10,13 @@ describe('ListMoneyComponent', () => {
   let component: ListMoneyComponent;
   let fixture: ComponentFixture<ListMoneyComponent>;
 
-  let mockStore: Store;
+  let mockStore: MockStore;
   const RouterSpy = jasmine.createSpyObj('Router', ['navigate']);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ListMoneyComponent],
+      declarations: [ListMoneyComponent, InfiniteScrollDirective],
+      imports: [InfiniteScrollModule],
       providers: [
         provideMockStore({ initialState: initialBncStateMock }),
         { provide: Router, useValue: RouterSpy }
@@ -54,7 +55,7 @@ describe('ListMoneyComponent', () => {
   it('Debe llamar al metodo appendItems()', () => {
     spyOn(component, 'appendItems').and.callThrough();
     component.assetsLoad = assetsMocks;
-    component.appendItems(0,20);
+    component.appendItems(0, 20);
     fixture.detectChanges();
     expect(component.appendItems).toHaveBeenCalled();
     expect(component.assetsView.length).toEqual(20);

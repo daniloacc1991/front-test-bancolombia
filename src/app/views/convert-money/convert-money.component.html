@@ -1,27 +1,27 @@
 <div class="col-xs-12 col-sm-6 offset-sm-3">
   <form [formGroup]="fgConvert">
     <div class="mb-3">
-      <label for="mount" class="form-label">Monto a Convertir</label>
+      <label for="mount" class="form-label">{{ 'CONVERT.INPUTS.MOUNT' | translate }}</label>
       <input type="number" class="form-control" id="mount" placeholder="10" formControlName="mount">
     </div>
     <div class="mb-3">
-      <label for="primaryCoin" class="form-label">Moneda / Criptomoneda</label>
-      <input type="text" class="form-control" id="primaryCoin" placeholder="Moneda / Criptomoneda"
+      <label for="primaryCoin" class="form-label">{{ 'CONVERT.INPUTS.CRYPTOCURRENCY' | translate }}</label>
+      <input type="text" class="form-control" id="primaryCoin" placeholder="{{ 'CONVERT.INPUTS.CRYPTOCURRENCY' | translate }}"
         formControlName="primaryCoin" [ngbTypeahead]="search" [inputFormatter]="formatter"
         [resultFormatter]="formatter" (selectItem)="selectPrimary($event)">
     </div>
     <div class="mb-3">
-      <label for="mount" class="form-label">Moneda / Criptomoneda</label>
-      <input type="text" class="form-control" id="mount" placeholder="Moneda / Criptomoneda"
+      <label for="secundaryCoin" class="form-label">{{ 'CONVERT.INPUTS.CRYPTOCURRENCY' | translate }}</label>
+      <input type="text" class="form-control" id="secundaryCoin" placeholder="{{ 'CONVERT.INPUTS.CRYPTOCURRENCY' | translate }}"
         formControlName="secundaryCoin" [ngbTypeahead]="search" [inputFormatter]="formatter"
-        [resultFormatter]="formatter">
+        [resultFormatter]="formatter" (selectItem)="selectSecundary($event)">
     </div>
     <div class="mb-3">
-      <label for="total" class="form-label">Monto Convertido</label>
-      <input type="number" class="form-control" id="total" placeholder="Monto Convertido" readonly>
+      <label for="total_convert" class="form-label">{{ 'CONVERT.INPUTS.MOUNT_CONVERT' | translate }}</label>
+      <input type="number" class="form-control" id="total_convert" placeholder="{{ 'CONVERT.INPUTS.MOUNT_CONVERT' | translate }}" readonly>
     </div>
     <div class="mb-3">
-      <button (click)="convert()" type="button" class="btn btn-primary btn-block" [disabled]="!fgConvert.valid">Primary</button>
+      <button (click)="convert()" type="button" class="btn btn-primary btn-block" [disabled]="!fgConvert.valid">{{ 'CONVERT.BUTTONS.CONVERT' | translate }}</button>
     </div>
   </form>
 </div>

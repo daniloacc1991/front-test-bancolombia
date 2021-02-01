@@ -54,7 +54,7 @@ export class ConvertMoneyComponent implements OnInit, OnDestroy {
     const mount = this.fgConvert.value.mount;
     const convertOne: number = (this.assetTicketPrimary.price * mount) / 1;
     const convertionFinal: number = (convertOne * 1) / this.assetTicketSecundary.price;
-    document.getElementById('total').setAttribute('value', convertionFinal.toFixed(2));
+    document.getElementById('total_convert').setAttribute('value', convertionFinal.toFixed(0));
   }
 
   getSubcriptions(): void {
@@ -85,8 +85,10 @@ export class ConvertMoneyComponent implements OnInit, OnDestroy {
     this.store.select(BncStoreSelectors.slAssets)
       .pipe(takeUntil(this.unSubject$))
       .subscribe(assets => {
-        if (assets) {
+        if (assets.length > 0) {
           this.assets = assets;
+        } else {
+          this.store.dispatch(BncStoreActions.LoadAll());
         }
       });
   }

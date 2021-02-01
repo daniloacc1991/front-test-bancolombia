@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +45,7 @@ export function tokenGetter() {
         disallowedRoutes: ['https://bravenewcoin.p.rapidapi.com/oauth/token', 'https://bravenewcoin.p.rapidapi.com/asset'],
       },
     }),
+    TranslateModule.forRoot(),
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -57,7 +59,6 @@ export function tokenGetter() {
     NgbModule,
   ],
   providers: [
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'COP' },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BncInterceptor,
